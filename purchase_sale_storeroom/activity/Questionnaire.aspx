@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="mb-4 text-center">問卷調查</h1>
+        <h1 class="mb-4 text-center">2024蔬素食展攤位回饋表</h1>
 
         <!-- 基本資料統計 -->
         <div class="section">
@@ -119,6 +119,40 @@
                     </select>
                     <label class="form-label mt-2">顏色選擇2：</label>
                     <select class="form-select" name="message-board-color2">
+                        <option value="" selected>請選擇</option>
+                        <option value="紅">紅</option>
+                        <option value="橙">橙</option>
+                        <option value="黃">黃</option>
+                        <option value="綠">綠</option>
+                        <option value="藍">藍</option>
+                        <option value="靛">靛</option>
+                        <option value="紫">紫</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label">點點貼氣球：</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="balloon" value="否" checked>
+                        <label class="form-check-label">否</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="balloon" value="是">
+                        <label class="form-check-label">是</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 hidden" id="balloon-colors">
+                    <label class="form-label">顏色選擇1：</label>
+                    <select class="form-select" name="balloon-color1">
+                        <option value="" selected>請選擇</option>
+                        <option value="金光系">金光系</option>
+                        <option value="銀光系">銀光系</option>
+                        <option value="純光系">純光系</option>
+                        <option value="無">無</option>
+                    </select>
+                    <label class="form-label mt-2">顏色選擇2：</label>
+                    <select class="form-select" name="balloon-color2">
                         <option value="" selected>請選擇</option>
                         <option value="紅">紅</option>
                         <option value="橙">橙</option>
