@@ -11,7 +11,6 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection.Emit;
 using Microsoft.SqlServer.Server;
-using ImageMagick;
 
 
 namespace purchase_sale_storeroom

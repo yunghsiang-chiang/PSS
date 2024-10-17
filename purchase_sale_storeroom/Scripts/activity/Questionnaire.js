@@ -39,6 +39,10 @@
         $(this).find('option[value=""]').remove(); // 移除 "請選擇" 選項
     });
 
+    $('#refresh-btn').click(function(){
+        resetForm();
+    })
+
     $('#submit-btn').click(function (event) {
         event.preventDefault();
 
