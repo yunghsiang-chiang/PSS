@@ -155,6 +155,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="activity\Questionnaire.aspx" />
+    <Content Include="activity\SurveyCharts.aspx" />
     <Content Include="attendance\attendance.aspx" />
     <Content Include="attendance\Attendance_calendar.aspx" />
     <Content Include="attendance\attendance_history.aspx" />
@@ -186,6 +187,7 @@
     <Content Include="purchase\entry_system.aspx" />
     <Content Include="Attendance.Master" />
     <Content Include="Scripts\activity\Questionnaire.js" />
+    <Content Include="Scripts\activity\SurveyCharts.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -258,6 +260,13 @@
     </Compile>
     <Compile Include="activity\Questionnaire.aspx.designer.cs">
       <DependentUpon>Questionnaire.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\SurveyCharts.aspx.cs">
+      <DependentUpon>SurveyCharts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\SurveyCharts.aspx.designer.cs">
+      <DependentUpon>SurveyCharts.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\clsDB.cs" />
     <Compile Include="App_Code\googleCalendar.cs" />
