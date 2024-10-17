@@ -16,7 +16,6 @@
 <body>
     <div class="container my-5">
         <h1 class="mb-4 text-center">問卷數據視覺化</h1>
-
         <div class="row">
             <!-- 社群數據圓餅圖 -->
             <div class="col-12 col-md-6">
@@ -30,7 +29,6 @@
                 <canvas id="ageBarChart"></canvas>
             </div>
         </div>
-
         <div class="row mt-5">
             <!-- message_board_color1 和 message_board_color2 分組直條圖 -->
             <div class="col-12">
@@ -64,10 +62,6 @@
                 <canvas id="balloonUsagePieChart" width="400" height="400"></canvas>
             </div>
         </div>
-
-
-
-
     </div>
 </body>
 </html>

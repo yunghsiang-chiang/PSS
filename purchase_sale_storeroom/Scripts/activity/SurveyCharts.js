@@ -96,11 +96,12 @@ function fetchGenderRatio() {
                     labels: ['男', '女'],
                     datasets: [{
                         data: [data.male, data.female],
-                        backgroundColor: ['#36A2EB', '#FF6384'] // 男: 藍色, 女: 紅色
+                        backgroundColor: ['#36A2EB', '#FF6384']
                     }]
                 },
                 options: {
                     responsive: true,
+                    plugins: [ChartDataLabels], // 確保啟用 ChartDataLabels 插件
                     plugins: {
                         datalabels: {
                             color: '#fff',
@@ -136,17 +137,18 @@ function fetchFeedbackResponseRate() {
                     labels: ['有回饋', '無回饋'],
                     datasets: [{
                         data: [data.responded, data.noResponse],
-                        backgroundColor: ['#4BC0C0', '#FFCE56'] // 有回饋: 綠色, 無回饋: 黃色
+                        backgroundColor: ['#4BC0C0', '#FFCE56']
                     }]
                 },
                 options: {
                     responsive: true,
+                    plugins: [ChartDataLabels],
                     plugins: {
                         datalabels: {
                             color: '#fff',
                             anchor: 'center',
                             align: 'center',
-                            formatter: (value) => `${value}%`, // 顯示百分比
+                            formatter: (value) => `${value}%`,
                             font: {
                                 weight: 'bold',
                                 size: 14
@@ -161,7 +163,6 @@ function fetchFeedbackResponseRate() {
         }
     });
 }
-
 //使用點點貼的比例圓餅圖
 function fetchBalloonUsageRate() {
     $.ajax({
@@ -175,17 +176,18 @@ function fetchBalloonUsageRate() {
                     labels: ['使用點點貼', '未使用點點貼'],
                     datasets: [{
                         data: [data.used, data.notUsed],
-                        backgroundColor: ['#FF6384', '#36A2EB'] // 使用: 紅色, 未使用: 藍色
+                        backgroundColor: ['#FF6384', '#36A2EB']
                     }]
                 },
                 options: {
                     responsive: true,
+                    plugins: [ChartDataLabels],
                     plugins: {
                         datalabels: {
                             color: '#fff',
                             anchor: 'center',
                             align: 'center',
-                            formatter: (value) => `${value}%`, // 顯示百分比
+                            formatter: (value) => `${value}%`,
                             font: {
                                 weight: 'bold',
                                 size: 14
@@ -200,8 +202,6 @@ function fetchBalloonUsageRate() {
         }
     });
 }
-
-
 
 // 繪製年齡範圍直條圖
 function fetchAgeData() {
