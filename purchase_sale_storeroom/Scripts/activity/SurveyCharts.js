@@ -96,21 +96,36 @@ function fetchGenderRatio() {
                     labels: ['男', '女'],
                     datasets: [{
                         data: [data.male, data.female],
-                        backgroundColor: ['#36A2EB', '#FF6384']
+                        backgroundColor: ['#36A2EB', '#FF6384'] // 男: 藍色, 女: 紅色
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: [ChartDataLabels], // 確保啟用 ChartDataLabels 插件
                     plugins: {
                         datalabels: {
                             color: '#fff',
                             anchor: 'center',
                             align: 'center',
-                            formatter: (value) => `${value}%`, // 顯示百分比
+                            offset: -10,
                             font: {
                                 weight: 'bold',
                                 size: 14
+                            },
+                            formatter: (value, context) => {
+                                const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return percentage + '%';
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
                             }
                         }
                     }
@@ -122,7 +137,6 @@ function fetchGenderRatio() {
         }
     });
 }
-
 
 //回饋感受的比例圓餅圖
 function fetchFeedbackResponseRate() {
@@ -137,21 +151,36 @@ function fetchFeedbackResponseRate() {
                     labels: ['有回饋', '無回饋'],
                     datasets: [{
                         data: [data.responded, data.noResponse],
-                        backgroundColor: ['#4BC0C0', '#FFCE56']
+                        backgroundColor: ['#4BC0C0', '#FFCE56'] // 有回饋: 綠色, 無回饋: 黃色
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: [ChartDataLabels],
                     plugins: {
                         datalabels: {
                             color: '#fff',
                             anchor: 'center',
                             align: 'center',
-                            formatter: (value) => `${value}%`,
+                            offset: -10,
                             font: {
                                 weight: 'bold',
                                 size: 14
+                            },
+                            formatter: (value, context) => {
+                                const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return percentage + '%';
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
                             }
                         }
                     }
@@ -163,6 +192,7 @@ function fetchFeedbackResponseRate() {
         }
     });
 }
+
 //使用點點貼的比例圓餅圖
 function fetchBalloonUsageRate() {
     $.ajax({
@@ -176,21 +206,36 @@ function fetchBalloonUsageRate() {
                     labels: ['使用點點貼', '未使用點點貼'],
                     datasets: [{
                         data: [data.used, data.notUsed],
-                        backgroundColor: ['#FF6384', '#36A2EB']
+                        backgroundColor: ['#FF6384', '#36A2EB'] // 使用: 紅色, 未使用: 藍色
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: [ChartDataLabels],
                     plugins: {
                         datalabels: {
                             color: '#fff',
                             anchor: 'center',
                             align: 'center',
-                            formatter: (value) => `${value}%`,
+                            offset: -10,
                             font: {
                                 weight: 'bold',
                                 size: 14
+                            },
+                            formatter: (value, context) => {
+                                const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return percentage + '%';
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
                             }
                         }
                     }
@@ -202,6 +247,7 @@ function fetchBalloonUsageRate() {
         }
     });
 }
+
 
 // 繪製年齡範圍直條圖
 function fetchAgeData() {
