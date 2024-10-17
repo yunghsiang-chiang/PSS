@@ -94,6 +94,7 @@
                         <option value="LINE">LINE</option>
                         <option value="FB">FB</option>
                         <option value="IG">IG</option>
+                        <option value="YouTube">YouTube</option>
                     </select>
                 </div>
             </div>
