@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="../Scripts/activity/SurveyCharts.js"></script>
 </head>
 <body>
@@ -45,6 +46,28 @@
                 <canvas id="submissionTimeLineChart"></canvas>
             </div>
         </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center">性別比例</h3>
+                <canvas id="genderPieChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center">回饋感受的比例</h3>
+                <canvas id="feedbackResponsePieChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center">使用點點貼的比例</h3>
+                <canvas id="balloonUsagePieChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+
+
+
+
     </div>
 </body>
 </html>

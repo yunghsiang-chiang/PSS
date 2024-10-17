@@ -12,6 +12,16 @@
 
     // 呼叫 Web API 並繪製問卷填寫時間線性圖
     fetchSubmissionTimeData();
+
+    // 性別比例
+    fetchGenderRatio();
+
+    //回饋感受的比例
+    fetchFeedbackResponseRate();
+
+    //使用點點貼的比例
+    fetchBalloonUsageRate();
+
 });
 
 // 繪製社群數據圓餅圖
@@ -20,24 +30,48 @@ function fetchSocialData() {
         url: 'http://internal.hochi.org.tw:8082/api/activity/SocialData',
         method: 'GET',
         success: function (data) {
-            const labels = data.platforms;
-            const values = data.values;
-
             const ctx = $('#socialPieChart')[0].getContext('2d');
             new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: labels,
+                    labels: data.platforms, // 社群平台名稱
                     datasets: [{
-                        data: values,
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                        data: data.values, // 各平台對應的數據
+                        backgroundColor: [
+                            '#FF6384', // 每個平台對應的顏色
+                            '#36A2EB',
+                            '#FFCE56',
+                            '#4BC0C0'
+                        ]
                     }]
                 },
                 options: {
                     responsive: true,
                     plugins: {
-                        legend: {
-                            position: 'top'
+                        datalabels: {
+                            color: '#fff', // 標籤文字顏色
+                            anchor: 'end', // 標籤錨點位置
+                            align: 'start', // 標籤文字對齊方式
+                            offset: -10, // 標籤位置偏移，讓標籤位於板塊內部
+                            font: {
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                const percentage = ((value / total) * 100).toFixed(1); // 計算百分比並保留1位小數
+                                return percentage + '%'; // 顯示百分比
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.chart.data.datasets[0].data.reduce((acc, curr) => acc + curr, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
                         }
                     }
                 }
@@ -48,6 +82,126 @@ function fetchSocialData() {
         }
     });
 }
+
+// 性別比例的圓餅圖
+function fetchGenderRatio() {
+    $.ajax({
+        url: 'http://internal.hochi.org.tw:8082/api/activity/GenderRatio',
+        method: 'GET',
+        success: function (data) {
+            const ctx = $('#genderPieChart')[0].getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['男', '女'],
+                    datasets: [{
+                        data: [data.male, data.female],
+                        backgroundColor: ['#36A2EB', '#FF6384'] // 男: 藍色, 女: 紅色
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        datalabels: {
+                            color: '#fff',
+                            anchor: 'center',
+                            align: 'center',
+                            formatter: (value) => `${value}%`, // 顯示百分比
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching gender ratio:', error);
+        }
+    });
+}
+
+
+//回饋感受的比例圓餅圖
+function fetchFeedbackResponseRate() {
+    $.ajax({
+        url: 'http://internal.hochi.org.tw:8082/api/activity/FeedbackResponseRate',
+        method: 'GET',
+        success: function (data) {
+            const ctx = $('#feedbackResponsePieChart')[0].getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['有回饋', '無回饋'],
+                    datasets: [{
+                        data: [data.responded, data.noResponse],
+                        backgroundColor: ['#4BC0C0', '#FFCE56'] // 有回饋: 綠色, 無回饋: 黃色
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        datalabels: {
+                            color: '#fff',
+                            anchor: 'center',
+                            align: 'center',
+                            formatter: (value) => `${value}%`, // 顯示百分比
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching feedback response rate:', error);
+        }
+    });
+}
+
+//使用點點貼的比例圓餅圖
+function fetchBalloonUsageRate() {
+    $.ajax({
+        url: 'http://internal.hochi.org.tw:8082/api/activity/BalloonUsageRate',
+        method: 'GET',
+        success: function (data) {
+            const ctx = $('#balloonUsagePieChart')[0].getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['使用點點貼', '未使用點點貼'],
+                    datasets: [{
+                        data: [data.used, data.notUsed],
+                        backgroundColor: ['#FF6384', '#36A2EB'] // 使用: 紅色, 未使用: 藍色
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        datalabels: {
+                            color: '#fff',
+                            anchor: 'center',
+                            align: 'center',
+                            formatter: (value) => `${value}%`, // 顯示百分比
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching balloon usage rate:', error);
+        }
+    });
+}
+
+
 
 // 繪製年齡範圍直條圖
 function fetchAgeData() {
