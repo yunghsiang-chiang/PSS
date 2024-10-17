@@ -100,19 +100,31 @@ function fetchColorDistributionData() {
         url: 'http://internal.hochi.org.tw:8082/api/activity/ColorDistribution',
         method: 'GET',
         success: function (data) {
-            const labels = data.colors; // 紅、橙、黃、綠、藍、靛、紫
-            const values = data.counts;
+            const labels = ['紅', '橙', '黃', '綠', '藍', '靛', '紫'];
+            const baseColors = {
+                '紅': '#FF0000',
+                '橙': '#FFA500',
+                '黃': '#FFFF00',
+                '綠': '#008000',
+                '藍': '#0000FF',
+                '靛': '#4B0082',
+                '紫': '#800080'
+            };
+
+            const datasets = data.groups.map((group, index) => ({
+                label: group, // 顏色選擇1 分組名稱 (如金光系)
+                data: data.data[index].colors,
+                backgroundColor: labels.map(color => adjustColorForGroup(baseColors[color], group)),
+                borderColor: labels.map(color => adjustColorForGroup(baseColors[color], group)),
+                borderWidth: 1
+            }));
 
             const ctx = $('#colorDistributionBarChart')[0].getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: labels,
-                    datasets: [{
-                        label: '人數',
-                        data: values,
-                        backgroundColor: '#FF6384'
-                    }]
+                    labels: labels, // 顏色選擇2
+                    datasets: datasets // 每個分組的數據集
                 },
                 options: {
                     responsive: true,
@@ -120,14 +132,20 @@ function fetchColorDistributionData() {
                         x: {
                             title: {
                                 display: true,
-                                text: '顏色'
+                                text: '顏色選擇2'
                             }
                         },
                         y: {
                             title: {
                                 display: true,
                                 text: '人數'
-                            }
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
                         }
                     }
                 }
@@ -138,6 +156,43 @@ function fetchColorDistributionData() {
         }
     });
 }
+
+// 用於為每個 message_board_color1 分組調整顏色
+function adjustColorForGroup(hexColor, group) {
+    let adjustment = 0;
+
+    if (group === '金光系') {
+        adjustment = -50; // 調暗
+    } else if (group === '銀光系') {
+        adjustment = 50;  // 調亮
+    }
+
+    return adjustColorBrightness(hexColor, adjustment);
+}
+
+// 調整顏色亮度的輔助函數
+function adjustColorBrightness(hex, amount) {
+    let usePound = false;
+    if (hex[0] === "#") {
+        hex = hex.slice(1);
+        usePound = true;
+    }
+
+    const num = parseInt(hex, 16);
+    let r = (num >> 16) + amount;
+    let g = ((num >> 8) & 0x00FF) + amount;
+    let b = (num & 0x0000FF) + amount;
+
+    r = Math.max(Math.min(255, r), 0);
+    g = Math.max(Math.min(255, g), 0);
+    b = Math.max(Math.min(255, b), 0);
+
+    return (usePound ? "#" : "") + (r << 16 | g << 8 | b).toString(16).padStart(6, '0');
+}
+
+
+
+
 
 // 繪製填寫問卷的小時分布圖
 function fetchSubmissionTimeData() {
