@@ -14,7 +14,7 @@
         };
 
         $.ajax({
-            url: 'http://internal.hochi.org.tw:8082//api/heip/SubmitExhibition',
+            url: 'http://internal.hochi.org.tw:8082/api/heip/SubmitExhibition',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(formData),
