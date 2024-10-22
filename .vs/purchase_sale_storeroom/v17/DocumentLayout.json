@@ -3,11 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\questionnaire.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\scripts\\activity\\exhibition.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\scripts\\activity\\exhibition.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\exhibition.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\activity\\exhibition.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\questionnaire.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\activity\\questionnaire.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\surveycharts.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\surveycharts.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\activity\\surveycharts.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
@@ -27,6 +35,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Exhibition.js",
+              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
+              "RelativeDocumentMoniker": "purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
+              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
+              "RelativeToolTip": "purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-22T08:23:21.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Exhibition.aspx",
+              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\Exhibition.aspx",
+              "RelativeDocumentMoniker": "purchase_sale_storeroom\\activity\\Exhibition.aspx",
+              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\Exhibition.aspx",
+              "RelativeToolTip": "purchase_sale_storeroom\\activity\\Exhibition.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-10-22T08:21:14.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Questionnaire.aspx",
               "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\Questionnaire.aspx",
               "RelativeDocumentMoniker": "purchase_sale_storeroom\\activity\\Questionnaire.aspx",
@@ -34,12 +68,11 @@
               "RelativeToolTip": "purchase_sale_storeroom\\activity\\Questionnaire.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-22T07:10:59.869Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T07:10:59.869Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "SurveyCharts.js",
               "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Scripts\\activity\\SurveyCharts.js",
               "RelativeDocumentMoniker": "purchase_sale_storeroom\\Scripts\\activity\\SurveyCharts.js",
@@ -51,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "SurveyCharts.aspx",
               "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
               "RelativeDocumentMoniker": "purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
@@ -59,8 +92,7 @@
               "RelativeToolTip": "purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-17T03:18:51.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-17T03:18:51.391Z"
             }
           ]
         }

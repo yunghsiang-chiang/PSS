@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="activity\Exhibition.aspx" />
     <Content Include="activity\Questionnaire.aspx" />
     <Content Include="activity\SurveyCharts.aspx" />
     <Content Include="attendance\attendance.aspx" />
@@ -186,6 +187,7 @@
     <Content Include="purchase\create_new_item.aspx" />
     <Content Include="purchase\entry_system.aspx" />
     <Content Include="Attendance.Master" />
+    <Content Include="Scripts\activity\Exhibition.js" />
     <Content Include="Scripts\activity\Questionnaire.js" />
     <Content Include="Scripts\activity\SurveyCharts.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -254,6 +256,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="activity\Exhibition.aspx.cs">
+      <DependentUpon>Exhibition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\Exhibition.aspx.designer.cs">
+      <DependentUpon>Exhibition.aspx</DependentUpon>
+    </Compile>
     <Compile Include="activity\Questionnaire.aspx.cs">
       <DependentUpon>Questionnaire.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
