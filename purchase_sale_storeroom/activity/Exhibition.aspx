@@ -6,14 +6,14 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>素食展服務調查</title>
+    <title>2024 台北國際蔬素食展傳光人打卡</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../Scripts/activity/Exhibition.js"></script>
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="mb-4">素食展問卷調查</h1>
+        <h1 class="mb-4">2024 台北國際蔬素食展傳光人打卡</h1>
 
         <!-- 光系選擇 -->
         <div class="mb-3">
