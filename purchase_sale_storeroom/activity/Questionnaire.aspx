@@ -105,7 +105,7 @@
             <h3>顏色選擇統計</h3>
             <div class="row g-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label">留言板：</label>
+                    <label class="form-label">🗒️留言板：</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="message-board" value="否" checked="checked" />
                         <label class="form-check-label">否</label>
@@ -139,7 +139,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label">點點貼氣球：</label>
+                    <label class="form-label">🎈點點貼氣球：</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="balloon" value="否" checked="checked" />
                         <label class="form-check-label">否</label>
