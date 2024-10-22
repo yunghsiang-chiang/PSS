@@ -3,11 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\scripts\\activity\\exhibition.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\test.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\test.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\egrou\\OneDrive\\\u6587\u4EF6\\EIP\\Main.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\scripts\\activity\\exhibition.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\scripts\\activity\\exhibition.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\exhibition.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\exhibition.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\activity\\exhibition.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
@@ -23,6 +30,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TEST.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\TEST.aspx.cs",
+              "RelativeDocumentMoniker": "purchase_sale_storeroom\\TEST.aspx.cs",
+              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\TEST.aspx.cs",
+              "RelativeToolTip": "purchase_sale_storeroom\\TEST.aspx.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T11:06:52.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\egrou\\OneDrive\\\u6587\u4EF6\\EIP\\Main.aspx.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\OneDrive\\\u6587\u4EF6\\EIP\\Main.aspx.cs",
+              "ToolTip": "C:\\Users\\egrou\\OneDrive\\\u6587\u4EF6\\EIP\\Main.aspx.cs",
+              "RelativeToolTip": "..\\..\\..\\OneDrive\\\u6587\u4EF6\\EIP\\Main.aspx.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAwL8CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T10:27:10.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Exhibition.js",
               "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
               "RelativeDocumentMoniker": "purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
@@ -30,12 +63,11 @@
               "RelativeToolTip": "purchase_sale_storeroom\\Scripts\\activity\\Exhibition.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-22T09:28:34.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T09:28:34.263Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Exhibition.aspx",
               "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\Exhibition.aspx",
               "RelativeDocumentMoniker": "purchase_sale_storeroom\\activity\\Exhibition.aspx",
@@ -43,8 +75,7 @@
               "RelativeToolTip": "purchase_sale_storeroom\\activity\\Exhibition.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-22T08:39:16.296Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T08:39:16.296Z"
             }
           ]
         }
