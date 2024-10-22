@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="mb-4">2024 台北國際蔬素食展傳光人打卡</h1>
+        <h1 class="mb-4">2024 台北國際蔬素食展<br />傳光人打卡</h1>
 
         <!-- 光系選擇 -->
         <div class="mb-3">
@@ -25,9 +25,9 @@
             </select>
         </div>
 
-        <!-- 光選擇 -->
+        <!-- 光色選擇 -->
         <div class="mb-3">
-            <label class="form-label">光:</label>
+            <label class="form-label">光色:</label>
             <select class="form-select" id="color">
                 <option value="紅">紅</option>
                 <option value="橙">橙</option>
@@ -43,9 +43,9 @@
         <div class="mb-3">
             <label class="form-label">是否參與素食展:</label>
             <div>
-                <input type="radio" name="IsAttendance" value="是" checked>
+                <input type="radio" name="IsAttendance" value="是" checked="checked" />
                 是
-                <input type="radio" name="IsAttendance" value="否">
+                <input type="radio" name="IsAttendance" value="否" />
                 否
             </div>
         </div>
