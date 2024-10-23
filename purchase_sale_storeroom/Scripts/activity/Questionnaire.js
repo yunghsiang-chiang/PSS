@@ -66,6 +66,12 @@
             Others: $('textarea[name="others"]').val()
         };
 
+        if (!surveyData.Satisfaction) {
+            alert('請選擇 參與者滿意度');
+            return;
+        }
+
+
         // 發送 POST 請求到 Web API
         $.ajax({
             url: 'http://internal.hochi.org.tw:8082/api/activity/SubmitSurvey',

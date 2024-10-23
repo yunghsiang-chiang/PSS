@@ -117,7 +117,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label"  for="balloon">點點貼氣球：</label>
+                    <label class="form-label" for="balloon">點點貼氣球：</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="balloon" value="否" checked="checked" />
                         <label class="form-check-label">否</label>
@@ -171,8 +171,8 @@
                     <textarea class="form-control" name="color-choice-text" rows="3" placeholder="請輸入"></textarea>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label class="form-label">參與者滿意度：</label>
-                    <select class="form-select" name="satisfaction">
+                    <label class="form-label">參與者滿意度：<span class="required">*</span></label>
+                    <select class="form-select" name="satisfaction" required="required">
                         <option value="" selected="selected">請選擇</option>
                         <option value="水下下">水下下</option>
                         <option value="水下">水下</option>
@@ -180,6 +180,7 @@
                         <option value="水上上">水上上</option>
                     </select>
                 </div>
+
                 <div class="col-12 col-md-6">
                     <label class="form-label">參與者互動建議：</label>
                     <textarea class="form-control" name="feedback" rows="3" placeholder="請輸入建議"></textarea>
