@@ -10,18 +10,18 @@
 
     $('input[name="message-board"]').change(function () {
         if ($(this).val() === '是') {
-            $('#message-board-colors, #message-board-colors-2').removeClass('hidden');
+            $('#message-board-colors').removeClass('hidden');
         } else {
-            $('#message-board-colors, #message-board-colors-2').addClass('hidden');
+            $('#message-board-colors').addClass('hidden');
             $('select[name="message-board-color1"], select[name="message-board-color2"]').val('');
         }
     });
 
     $('input[name="balloon"]').change(function () {
         if ($(this).val() === '是') {
-            $('#balloon-colors, #balloon-colors-2').removeClass('hidden');
+            $('#balloon-colors').removeClass('hidden');
         } else {
-            $('#balloon-colors, #balloon-colors-2').addClass('hidden');
+            $('#balloon-colors').addClass('hidden');
             $('select[name="balloon-color1"], select[name="balloon-color2"]').val('');
         }
     });
@@ -89,14 +89,24 @@
         $('input[name="gender"][value="男"]').prop('checked', true);
         $('select[name="age"]').val('0-10');
         $('input[name="check-in"][value="否"]').prop('checked', true);
-        $('select[name="social-platform"]').val('').closest('#social-platforms').addClass('hidden');
+        $('#social-platforms').addClass('hidden');
+        $('select[name="social-platform"]').val('');
+
         $('input[name="message-board"][value="否"]').prop('checked', true);
-        $('select[name="message-board-color1"], select[name="message-board-color2"]').val('').closest('#message-board-colors, #message-board-colors-2').addClass('hidden');
+        $('#message-board-colors').addClass('hidden');
+        $('select[name="message-board-color1"], select[name="message-board-color2"]').val('');
+
         $('input[name="balloon"][value="否"]').prop('checked', true);
-        $('select[name="balloon-color1"], select[name="balloon-color2"]').val('').closest('#balloon-colors, #balloon-colors-2').addClass('hidden');
+        $('#balloon-colors').addClass('hidden');
+        $('select[name="balloon-color1"], select[name="balloon-color2"]').val('');
+
         $('select[name="color-choice"]').val('需要的');
-        $('textarea[name="color-choice-text"]').val('').closest('#color-choice-text').addClass('hidden');
+        $('#color-choice-text').addClass('hidden');
+        $('textarea[name="color-choice-text"]').val('');
+
         $('select[name="satisfaction"]').html('<option value="" selected>請選擇</option><option value="水下下">水下下</option><option value="水下">水下</option><option value="水上">水上</option><option value="水上上">水上上</option>');
+
         $('textarea[name="feedback"], textarea[name="promoter-observation"], textarea[name="others"]').val('');
     }
+
 });
