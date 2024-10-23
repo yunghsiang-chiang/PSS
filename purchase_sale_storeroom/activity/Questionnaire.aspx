@@ -10,29 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../Scripts/activity/Questionnaire.js"></script>
-    <style>
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                margin-bottom: 1rem;
-            }
-
-            .form-label {
-                margin-bottom: 0.5rem;
-            }
-
-            .mb-3 {
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
+    <link href="../Content/activity/Questionnaire.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container my-5">
@@ -105,7 +83,7 @@
             <h3>顏色選擇統計</h3>
             <div class="row g-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label">🗒️留言板：</label>
+                    <label class="form-label" for="message-board">留言板：</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="message-board" value="否" checked="checked" />
                         <label class="form-check-label">否</label>
@@ -139,7 +117,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label">🎈點點貼氣球：</label>
+                    <label class="form-label"  for="balloon">點點貼氣球：</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="balloon" value="否" checked="checked" />
                         <label class="form-check-label">否</label>
@@ -180,11 +158,13 @@
                 <div class="col-12 col-md-6">
                     <label class="form-label">參與者選顏色方式：</label>
                     <select class="form-select" name="color-choice">
-                        <option value="需要的" selected="selected">需要的</option>
+                        <option value="" selected="selected">請選擇</option>
+                        <option value="需要的">需要的</option>
                         <option value="喜歡的">喜歡的</option>
                         <option value="隨機的">隨機的</option>
                         <option value="其他">其他</option>
                     </select>
+
                 </div>
                 <div class="col-12 col-md-6 hidden" id="color-choice-text">
                     <label class="form-label">填寫選擇顏色方式：</label>
