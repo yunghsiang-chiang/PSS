@@ -156,7 +156,7 @@
             <h3>反饋與觀察</h3>
             <div class="row g-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label">參與者選顏色方式：</label>
+                    <label class="form-label">參與者選顏色方式：<span class="required">*</span></label>
                     <select class="form-select" name="color-choice">
                         <option value="" selected="selected">請選擇</option>
                         <option value="需要的">需要的</option>

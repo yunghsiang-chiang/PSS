@@ -66,6 +66,10 @@
             Others: $('textarea[name="others"]').val()
         };
 
+        if (!surveyData.ColorChoice) {
+            alert('請選擇 參與者選顏色方式');
+            return;
+        }
         if (!surveyData.Satisfaction) {
             alert('請選擇 參與者滿意度');
             return;
