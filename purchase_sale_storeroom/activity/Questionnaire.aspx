@@ -36,15 +36,9 @@
                 <div class="col-12 col-md-6">
                     <label class="form-label">年齡範圍：</label>
                     <select class="form-select" name="age">
-                        <option value="0-10">0~10</option>
-                        <option value="11-20">11~20</option>
-                        <option value="21-30">21~30</option>
-                        <option value="31-40">31~40</option>
-                        <option value="41-50">41~50</option>
-                        <option value="51-60">51~60</option>
-                        <option value="61-70">61~70</option>
-                        <option value="71-80">71~80</option>
-                        <option value="80+">80以上</option>
+                        <option value="大專高中">大專高中</option>
+                        <option value="成人">成人</option>
+                        <option value="銀髮">銀髮</option>
                     </select>
                 </div>
             </div>
