@@ -16,6 +16,7 @@
 <body>
     <div class="container my-5">
         <h1 class="mb-4 text-center">問卷數據視覺化</h1>
+        <h4 class="text-center" id="totalParticipants">參與活動的總人數: 計算中...</h4> <!-- 顯示總人數的標題 -->
         <div class="row">
             <!-- 社群數據圓餅圖 -->
             <div class="col-12 col-md-6">

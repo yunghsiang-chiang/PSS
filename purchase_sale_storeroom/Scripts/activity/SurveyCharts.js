@@ -258,6 +258,10 @@ function fetchAgeData() {
             const labels = data.ageRanges;
             const values = data.counts;
 
+            // 計算總參與人數
+            const totalParticipants = values.reduce((acc, count) => acc + count, 0);
+            $('#totalParticipants').text(`參與活動的總人數: ${totalParticipants}`);
+
             const ctx = $('#ageBarChart')[0].getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
@@ -293,6 +297,7 @@ function fetchAgeData() {
         }
     });
 }
+
 
 // 繪製顏色選擇分布直條圖
 function fetchColorDistributionData() {
