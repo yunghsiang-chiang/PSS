@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\surveycharts.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\activity\\surveycharts.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\instructor_training.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\instructor_training.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\scripts\\activity\\surveycharts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\scripts\\activity\\surveycharts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\instructor_training.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\instructor_training.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|c:\\users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{49E59D7D-7E50-4A9C-ABB2-6129A60BFECA}|purchase_sale_storeroom\\purchase_sale_storeroom.csproj|solutionrelative:purchase_sale_storeroom\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Web.config",
+              "RelativeDocumentMoniker": "purchase_sale_storeroom\\Web.config",
+              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Web.config",
+              "RelativeToolTip": "purchase_sale_storeroom\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-02-14T04:07:54.242Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SurveyCharts.js",
-              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Scripts\\activity\\SurveyCharts.js",
-              "RelativeDocumentMoniker": "purchase_sale_storeroom\\Scripts\\activity\\SurveyCharts.js",
-              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Scripts\\activity\\SurveyCharts.js",
-              "RelativeToolTip": "purchase_sale_storeroom\\Scripts\\activity\\SurveyCharts.js",
-              "ViewState": "AgIAAI0AAAAAAAAAAAA1wAEBAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-25T09:52:52.569Z",
+              "Title": "Instructor_Training.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Instructor_Training.aspx.cs",
+              "RelativeDocumentMoniker": "purchase_sale_storeroom\\Instructor_Training.aspx.cs",
+              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Instructor_Training.aspx.cs",
+              "RelativeToolTip": "purchase_sale_storeroom\\Instructor_Training.aspx.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAADwv2MAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T03:57:20.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SurveyCharts.aspx",
-              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
-              "RelativeDocumentMoniker": "purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
-              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
-              "RelativeToolTip": "purchase_sale_storeroom\\activity\\SurveyCharts.aspx",
+              "Title": "Instructor_Training.aspx",
+              "DocumentMoniker": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Instructor_Training.aspx",
+              "RelativeDocumentMoniker": "purchase_sale_storeroom\\Instructor_Training.aspx",
+              "ToolTip": "C:\\Users\\egrou\\source\\repos\\purchase_sale_storeroom\\purchase_sale_storeroom\\Instructor_Training.aspx",
+              "RelativeToolTip": "purchase_sale_storeroom\\Instructor_Training.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-10-25T09:52:06.56Z",
+              "WhenOpened": "2025-02-14T02:18:50.491Z",
               "EditorCaption": ""
             }
           ]

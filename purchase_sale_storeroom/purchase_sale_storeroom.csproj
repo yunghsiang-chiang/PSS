@@ -182,6 +182,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Instructor_Training.aspx" />
     <Content Include="login.aspx" />
     <Content Include="login_attendance.aspx" />
     <Content Include="purchase\create_new_class.aspx" />
@@ -334,6 +335,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor_Training.aspx.cs">
+      <DependentUpon>Instructor_Training.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor_Training.aspx.designer.cs">
+      <DependentUpon>Instructor_Training.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
