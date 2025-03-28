@@ -43,8 +43,28 @@
         <div class="alert alert-info" id="uploadResult" runat="server" visible="false">
             <asp:Label ID="lblResult" runat="server" Text=""></asp:Label>
         </div>
-    </form>
-
+        <div class="alert alert-info" visible="false">&nbsp;</div>
+        <hr />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ExportID" DataSourceID="SqlDataSource1">
+            <Columns>
+                <asp:BoundField DataField="ExportID" HeaderText="ExportID" ReadOnly="True" InsertVisible="False" SortExpression="ExportID"></asp:BoundField>
+                <asp:BoundField DataField="SourceSystem" HeaderText="SourceSystem" SortExpression="SourceSystem"></asp:BoundField>
+                <asp:BoundField DataField="ExportStartDate" HeaderText="ExportStartDate" SortExpression="ExportStartDate"></asp:BoundField>
+                <asp:BoundField DataField="ExportEndDate" HeaderText="ExportEndDate" SortExpression="ExportEndDate"></asp:BoundField>
+                <asp:BoundField DataField="ExportTime" HeaderText="ExportTime" SortExpression="ExportTime"></asp:BoundField>
+                <asp:BoundField DataField="TotalOrders" HeaderText="TotalOrders" SortExpression="TotalOrders"></asp:BoundField>
+                <asp:BoundField DataField="FileName" HeaderText="FileName" SortExpression="FileName"></asp:BoundField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HochiSystemConnectionString %>" SelectCommand="SELECT [ExportID]
+      ,[SourceSystem]
+      ,[ExportStartDate]
+      ,[ExportEndDate]
+      ,[ExportTime]
+      ,[TotalOrders]
+      ,[FileName]
+  FROM [HochiReports].[dbo].[OrderExportLog]
+  order by ExportStartDate desc"></asp:SqlDataSource>
     <script>
         // 你可以加入日期檢查或提示
     </script>
