@@ -179,6 +179,7 @@ namespace purchase_sale_storeroom.sale
 
                 lblResult.Text = $"✅ 匯入成功，共 {totalRows} 筆訂單資料已寫入資料庫。";
                 uploadResult.Visible = true;
+                gvOrders.DataBind(); // ⬅ 這行會讓 GridView 自動顯示更新結果
             }
             catch (Exception ex)
             {
