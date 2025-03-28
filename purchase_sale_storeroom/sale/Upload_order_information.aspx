@@ -45,7 +45,7 @@
         </div>
         <div class="alert alert-info" visible="false">&nbsp;</div>
         <hr />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ExportID" DataSourceID="SqlDataSource1">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ExportID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True">
             <Columns>
                 <asp:BoundField DataField="ExportID" HeaderText="ExportID" ReadOnly="True" InsertVisible="False" SortExpression="ExportID"></asp:BoundField>
                 <asp:BoundField DataField="SourceSystem" HeaderText="SourceSystem" SortExpression="SourceSystem"></asp:BoundField>
@@ -65,6 +65,7 @@
       ,[FileName]
   FROM [HochiReports].[dbo].[OrderExportLog]
   order by ExportStartDate desc"></asp:SqlDataSource>
+        </form>
     <script>
         // 你可以加入日期檢查或提示
     </script>
