@@ -156,7 +156,8 @@ namespace purchase_sale_storeroom.sale
                             cmd.Parameters.AddWithValue("@StoreName", row["門市名稱"] ?? (object)DBNull.Value);
                             cmd.Parameters.AddWithValue("@TaxID", row["統一編號"] ?? (object)DBNull.Value);
                             cmd.Parameters.AddWithValue("@InvoiceAddress", row["發票地址"] ?? (object)DBNull.Value);
-                            cmd.Parameters.AddWithValue("@ProductCode", row["商品貨號"] ?? (object)DBNull.Value);
+                            cmd.Parameters.AddWithValue("@ProductCode",string.IsNullOrWhiteSpace(row["商品貨號"]?.ToString()) ? "-" : row["商品貨號"].ToString());
+
                             cmd.Parameters.AddWithValue("@ProductName", row["商品名稱"] ?? (object)DBNull.Value);
                             cmd.Parameters.AddWithValue("@ProductOption", row["選項"] ?? (object)DBNull.Value);
 
