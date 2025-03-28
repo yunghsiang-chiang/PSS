@@ -32,7 +32,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="fileUpload" class="form-label">選擇訂單報表檔案</label>
+            <label for="fileUpload" class="form-label">選擇訂單報表檔案 <small class="text-danger">(僅接受 .xlsx 檔案)</small></label>
             <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control" accept=".xlsx" />
         </div>
 
