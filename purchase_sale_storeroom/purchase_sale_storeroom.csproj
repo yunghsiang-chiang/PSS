@@ -200,6 +200,7 @@
     <Content Include="purchase\create_new_item.aspx" />
     <Content Include="purchase\entry_system.aspx" />
     <Content Include="Attendance.Master" />
+    <Content Include="sale\Revenue.aspx" />
     <Content Include="sale\Upload_order_information.aspx" />
     <Content Include="Scripts\activity\Exhibition.js" />
     <Content Include="Scripts\activity\Questionnaire.js" />
@@ -397,6 +398,13 @@
     </Compile>
     <Compile Include="purchase\entry_system.aspx.designer.cs">
       <DependentUpon>entry_system.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sale\Revenue.aspx.cs">
+      <DependentUpon>Revenue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sale\Revenue.aspx.designer.cs">
+      <DependentUpon>Revenue.aspx</DependentUpon>
     </Compile>
     <Compile Include="sale\Upload_order_information.aspx.cs">
       <DependentUpon>Upload_order_information.aspx</DependentUpon>
