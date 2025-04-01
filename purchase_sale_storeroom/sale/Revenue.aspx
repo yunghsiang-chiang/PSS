@@ -11,8 +11,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:DropDownList ID="ddlMonth" runat="server" CssClass="form-control mb-3"></asp:DropDownList>
-        <asp:Button ID="btnSearch" runat="server" Text="查詢" CssClass="btn btn-primary mb-3" OnClick="btnSearch_Click" />
+
+        <div class="container text-center my-4">
+            <asp:DropDownList ID="ddlMonth" runat="server" CssClass="form-control d-inline-block w-auto me-2"></asp:DropDownList>
+            <asp:Button ID="btnSearch" runat="server" Text="查詢" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+        </div>
 
         <div id="revenueResult" class="container">
             <!-- 實體商品 -->
