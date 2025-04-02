@@ -36,53 +36,60 @@ namespace purchase_sale_storeroom.sale
             string sql = $"SELECT CheckoutPrice, Quantity, ProductCode, ProductName, ProductOption, DistributionPoint FROM HochiReports.dbo.HochiOrders WHERE ExportID = {exportId}";
             DataTable dt = db.SQL_Select(sql, "HochiSystemConnectionString");
 
-            var physicalGoods = new Dictionary<string, decimal>(); // DistributionPoint -> total amount
-            decimal bookTotal = 0;
+            // 取得 ProfitSharing 對應表
+            string profitMapSql = "SELECT DistributionPoint, ProfitSharingPoint FROM HochiReports.dbo.ProfitSharing";
+            DataTable mapTable = db.SQL_Select(profitMapSql, "HochiSystemConnectionString");
+
+            // 建立對照字典
+            Dictionary<string, string> distributionToPoint = new Dictionary<string, string>();
+            foreach (DataRow row in mapTable.Rows)
+            {
+                string from = row["DistributionPoint"]?.ToString() ?? "";
+                string to = row["ProfitSharingPoint"]?.ToString() ?? "";
+                if (!distributionToPoint.ContainsKey(from))
+                    distributionToPoint[from] = string.IsNullOrEmpty(to) ? from : to;
+            }
+
+            // 統計商品金額 (根據 ProfitSharingPoint 分組)
+            var physicalGoods = new Dictionary<string, decimal>();
 
             foreach (DataRow row in dt.Rows)
             {
                 string productCode = row["ProductCode"]?.ToString() ?? "";
                 string distribution = row["DistributionPoint"]?.ToString() ?? "";
-                string productName = row["ProductName"]?.ToString() ?? "";
-                string productOption = row["ProductOption"]?.ToString() ?? "";
                 decimal price = row["CheckoutPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(row["CheckoutPrice"]);
                 int qty = Convert.ToInt32(row["Quantity"]);
                 decimal amount = price * qty;
 
+                // 非書籍才計算
                 bool isBook = false;
+                string productName = row["ProductName"]?.ToString() ?? "";
+                string productOption = row["ProductOption"]?.ToString() ?? "";
 
-                // 條件 1：ProductCode 無法轉為 int → 書
                 if (!string.IsNullOrWhiteSpace(productCode) && productCode.Length >= 2 && !int.TryParse(productCode.Substring(0, 2), out _))
                     isBook = true;
-
-
-                // 條件 2：ProductCode 是 "-"，且有 ProductOption（組合書籍）
                 if (productCode == "-" && !string.IsNullOrWhiteSpace(productOption))
                     isBook = true;
-
-                // 條件 3：ProductName 包含關鍵字，例如"冊"
                 if (!string.IsNullOrWhiteSpace(productName) && productName.Contains("冊"))
                     isBook = true;
 
-                if (isBook)
+                if (!isBook)
                 {
-                    bookTotal += amount;
-                }
-                else
-                {
-                    if (!physicalGoods.ContainsKey(distribution))
-                        physicalGoods[distribution] = 0;
-                    physicalGoods[distribution] += amount;
+                    string profitPoint = distributionToPoint.ContainsKey(distribution) ? distributionToPoint[distribution] : distribution;
+                    if (!physicalGoods.ContainsKey(profitPoint))
+                        physicalGoods[profitPoint] = 0;
+                    physicalGoods[profitPoint] += amount;
                 }
             }
 
-            // 建立前端結果輸出
+            // 輸出實體商品分潤表格
             string js = "<script>$('#tblProductShare tbody').empty();";
-            foreach (var item in physicalGoods)
+            foreach (var item in physicalGoods.OrderByDescending(i => i.Value))
             {
                 decimal share = Math.Round(item.Value * 0.05M, 0);
                 js += $"$('#tblProductShare tbody').append('<tr><td>{item.Key}</td><td>{item.Value:N0}</td><td>{share:N0}</td></tr>');";
             }
+
 
             // 書籍彙總表：以書名為主 key
             var bookSummary = new Dictionary<string, (int Qty, decimal TotalAmount, decimal UnitPrice)>();

@@ -23,7 +23,7 @@
             <table class="table table-bordered" id="tblProductShare">
                 <thead>
                     <tr>
-                        <th>配送地點</th>
+                        <th>分潤點</th>
                         <th>總金額</th>
                         <th>5% 分潤</th>
                     </tr>
