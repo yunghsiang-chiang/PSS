@@ -98,3 +98,11 @@ C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\
 C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\ExcelDataReader.DataSet.pdb
 C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\ExcelDataReader.DataSet.xml
 C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\System.Text.Encoding.CodePages.xml
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\EPPlus.dll
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\EPPlus.Interfaces.dll
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\System.ComponentModel.Annotations.dll
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\System.Security.Cryptography.Xml.dll
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\EPPlus.xml
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\egrou\source\repos\purchase_sale_storeroom\purchase_sale_storeroom\bin\System.Security.Cryptography.Xml.xml

@@ -6,6 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
+using System.IO;
+
 
 namespace purchase_sale_storeroom.sale
 {
@@ -13,8 +17,6 @@ namespace purchase_sale_storeroom.sale
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack) {
 
                 clsDB db = new clsDB();
@@ -25,7 +27,6 @@ namespace purchase_sale_storeroom.sale
                 ddlMonth.DataValueField = "ExportID";
                 ddlMonth.DataBind();
             }
-       
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -151,6 +152,107 @@ namespace purchase_sale_storeroom.sale
             ClientScript.RegisterStartupScript(this.GetType(), "updateTable", js);
 
         }
+
+        // 匯出按鈕事件
+        protected void btnExport_Click(object sender, EventArgs e)
+        {
+            int exportId = int.Parse(ddlMonth.SelectedValue);
+            clsDB db = new clsDB();
+
+            string sql = $"SELECT CheckoutPrice, Quantity, ProductCode, ProductName, ProductOption, DistributionPoint FROM HochiReports.dbo.HochiOrders WHERE ExportID = {exportId}";
+            DataTable dt = db.SQL_Select(sql, "HochiSystemConnectionString");
+
+            string profitMapSql = "SELECT DistributionPoint, ProfitSharingPoint FROM HochiReports.dbo.ProfitSharing";
+            DataTable mapTable = db.SQL_Select(profitMapSql, "HochiSystemConnectionString");
+            Dictionary<string, string> distributionToPoint = mapTable.AsEnumerable()
+                .GroupBy(r => r.Field<string>("DistributionPoint"))
+                .ToDictionary(g => g.Key, g => string.IsNullOrWhiteSpace(g.First()["ProfitSharingPoint"].ToString()) ? g.Key : g.First()["ProfitSharingPoint"].ToString());
+
+            var productTable = new DataTable();
+            productTable.Columns.Add("分潤據點");
+            productTable.Columns.Add("總金額", typeof(decimal));
+            productTable.Columns.Add("分潤金額 (5%)", typeof(decimal));
+
+            var bookTable = new DataTable();
+            bookTable.Columns.Add("書名");
+            bookTable.Columns.Add("數量", typeof(int));
+            bookTable.Columns.Add("單價", typeof(decimal));
+            bookTable.Columns.Add("總金額", typeof(decimal));
+            bookTable.Columns.Add("分潤金額 (80%)", typeof(decimal));
+
+            var physicalGoods = new Dictionary<string, decimal>();
+            var bookSummary = new Dictionary<string, (int Qty, decimal TotalAmount, decimal UnitPrice)>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string productCode = row["ProductCode"]?.ToString() ?? "";
+                string distribution = row["DistributionPoint"]?.ToString() ?? "";
+                string productName = row["ProductName"]?.ToString() ?? "";
+                string productOption = row["ProductOption"]?.ToString() ?? "";
+                decimal price = row["CheckoutPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(row["CheckoutPrice"]);
+                int qty = Convert.ToInt32(row["Quantity"]);
+                decimal amount = price * qty;
+
+                bool isBook = false;
+                if (!string.IsNullOrWhiteSpace(productCode) && productCode.Length >= 2 && !int.TryParse(productCode.Substring(0, 2), out _)) isBook = true;
+                if (productCode == "-" && !string.IsNullOrWhiteSpace(productOption)) isBook = true;
+                if (!string.IsNullOrWhiteSpace(productName) && productName.Contains("冊")) isBook = true;
+
+                if (isBook)
+                {
+                    string bookKey = !string.IsNullOrWhiteSpace(productName) ? productName : productOption;
+                    if (!bookSummary.ContainsKey(bookKey))
+                        bookSummary[bookKey] = (0, 0, price);
+                    bookSummary[bookKey] = (
+                        bookSummary[bookKey].Qty + qty,
+                        bookSummary[bookKey].TotalAmount + amount,
+                        price
+                    );
+                }
+                else
+                {
+                    string profitPoint = distributionToPoint.ContainsKey(distribution) ? distributionToPoint[distribution] : distribution;
+                    if (!physicalGoods.ContainsKey(profitPoint))
+                        physicalGoods[profitPoint] = 0;
+                    physicalGoods[profitPoint] += amount;
+                }
+            }
+
+            foreach (var item in physicalGoods)
+            {
+                decimal share = Math.Round(item.Value * 0.05M, 0);
+                productTable.Rows.Add(item.Key, item.Value, share);
+            }
+
+            foreach (var book in bookSummary)
+            {
+                int qty = book.Value.Qty;
+                decimal total = book.Value.TotalAmount;
+                decimal unit = book.Value.UnitPrice;
+                decimal share = Math.Round(total * 0.8M, 0);
+                bookTable.Rows.Add(book.Key, qty, unit, total, share);
+            }
+
+            OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+
+            using (ExcelPackage ep = new ExcelPackage())
+            {
+                var ws1 = ep.Workbook.Worksheets.Add("實體商品分潤");
+                ws1.Cells[1, 1].LoadFromDataTable(productTable, true, TableStyles.Light9);
+
+                var ws2 = ep.Workbook.Worksheets.Add("書籍銷售分潤");
+                ws2.Cells[1, 1].LoadFromDataTable(bookTable, true, TableStyles.Light11);
+
+                Response.Clear();
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                string filename = $"分潤報表_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                Response.AddHeader("content-disposition", "attachment;  filename=" + filename);
+                Response.BinaryWrite(ep.GetAsByteArray());
+                Response.End();
+            }
+        }
+
 
     }
 }

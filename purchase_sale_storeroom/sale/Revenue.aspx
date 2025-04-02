@@ -15,6 +15,8 @@
         <div class="container text-center my-4">
             <asp:DropDownList ID="ddlMonth" runat="server" CssClass="form-control d-inline-block w-auto me-2"></asp:DropDownList>
             <asp:Button ID="btnSearch" runat="server" Text="查詢" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+            <asp:Button ID="btnExport" runat="server" Text="匯出 Excel" CssClass="btn btn-success mb-3" OnClick="btnExport_Click" />
+
         </div>
 
         <div id="revenueResult" class="container">
