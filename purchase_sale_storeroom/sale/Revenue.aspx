@@ -8,6 +8,8 @@
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,6 +34,32 @@
                 </thead>
                 <tbody></tbody>
             </table>
+
+            <!-- Modal 結構 -->
+            <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="detailModalLabel">商品明細</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>商品名稱</th>
+                                        <th>商品選項</th>
+                                        <th>商品編碼</th>
+                                        <th>單價</th>
+                                        <th>數量</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detailTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- 書籍 -->
             <h4>📚 書籍銷售分潤 (80%)</h4>

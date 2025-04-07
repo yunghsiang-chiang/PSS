@@ -53,6 +53,8 @@ namespace purchase_sale_storeroom.sale
 
             // 統計商品金額 (根據 ProfitSharingPoint 分組)
             var physicalGoods = new Dictionary<string, decimal>();
+            // 儲存每個分潤點對應的商品明細
+            Dictionary<string, List<string>> detailMap = new Dictionary<string, List<string>>();
 
             foreach (DataRow row in dt.Rows)
             {
@@ -80,7 +82,16 @@ namespace purchase_sale_storeroom.sale
                     if (!physicalGoods.ContainsKey(profitPoint))
                         physicalGoods[profitPoint] = 0;
                     physicalGoods[profitPoint] += amount;
+
+                    string detailRow = $"<tr><td>{HttpUtility.HtmlEncode(productName)}</td><td>{HttpUtility.HtmlEncode(productOption)}</td><td>{HttpUtility.HtmlEncode(productCode)}</td><td>{price}</td><td>{qty}</td></tr>";
+
+                    if (!detailMap.ContainsKey(profitPoint))
+                        detailMap[profitPoint] = new List<string>();
+                    detailMap[profitPoint].Add(detailRow);
+
                 }
+
+
             }
 
             // 輸出實體商品分潤表格
@@ -88,7 +99,8 @@ namespace purchase_sale_storeroom.sale
             foreach (var item in physicalGoods.OrderByDescending(i => i.Value))
             {
                 decimal share = Math.Round(item.Value * 0.05M, 0);
-                js += $"$('#tblProductShare tbody').append('<tr><td>{item.Key}</td><td>{item.Value:N0}</td><td>{share:N0}</td></tr>');";
+                js += $"$('#tblProductShare tbody').append('<tr><td><a href=\"#\" class=\"profit-point-link\" data-point=\"{item.Key}\">{item.Key}</a></td><td>{item.Value:N0}</td><td>{share:N0}</td></tr>');";
+
             }
 
 
@@ -145,10 +157,30 @@ namespace purchase_sale_storeroom.sale
                 bookShareTotal += share;
             }
 
-            // 總計列
-            js += $"$('#tblBookShare tbody').append('<tr style=\"font-weight:bold;\"><td>總計</td><td></td><td></td><td>{bookTotalAmount:N0}</td><td>{bookShareTotal:N0}</td></tr>');";
-            js += "</script>";
+            js += "$(document).off('click', '.profit-point-link');";
 
+            js += "$(document).on('click', '.profit-point-link', function() {" +
+                  "var point = $(this).data('point');" +
+                  "var rows = detailMap[point] || '';" +
+                  "$('#detailTableBody').html(rows);" +
+                  "$('#detailModal').modal('show');" +
+                  "});";
+
+
+            // 總計列
+
+            js += $"$('#tblBookShare tbody').append('<tr style=\"font-weight:bold;\"><td>總計</td><td></td><td></td><td>{bookTotalAmount:N0}</td><td>{bookShareTotal:N0}</td></tr>');";
+            
+
+            js += "var detailMap = {};";
+            foreach (var kvp in detailMap)
+            {
+                string key = kvp.Key.Replace("'", "\\'");
+                string value = string.Join("", kvp.Value).Replace("'", "\\'");
+                js += $"detailMap['{key}'] = '{value}';";
+            }
+
+            js += "</script>";
             ClientScript.RegisterStartupScript(this.GetType(), "updateTable", js);
 
         }
