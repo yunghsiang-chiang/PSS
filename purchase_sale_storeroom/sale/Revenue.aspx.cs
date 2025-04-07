@@ -55,6 +55,8 @@ namespace purchase_sale_storeroom.sale
             var physicalGoods = new Dictionary<string, decimal>();
             // 儲存每個分潤點對應的商品明細
             Dictionary<string, List<string>> detailMap = new Dictionary<string, List<string>>();
+            // 新增 Dictionary 儲存每個分潤點的 Top3 原始資料
+            Dictionary<string, Dictionary<string, (int Qty, decimal Total)>> top3Map = new Dictionary<string, Dictionary<string, (int Qty, decimal Total)>>();
 
             foreach (DataRow row in dt.Rows)
             {
@@ -89,6 +91,17 @@ namespace purchase_sale_storeroom.sale
                         detailMap[profitPoint] = new List<string>();
                     detailMap[profitPoint].Add(detailRow);
 
+                    if (!top3Map.ContainsKey(profitPoint))
+                        top3Map[profitPoint] = new Dictionary<string, (int, decimal)>();
+
+                    if (!top3Map[profitPoint].ContainsKey(productName))
+                        top3Map[profitPoint][productName] = (0, 0);
+
+                    top3Map[profitPoint][productName] = (
+                        top3Map[profitPoint][productName].Qty + qty,
+                        top3Map[profitPoint][productName].Total + price * qty
+                    );
+
                 }
 
 
@@ -102,6 +115,29 @@ namespace purchase_sale_storeroom.sale
                 js += $"$('#tblProductShare tbody').append('<tr><td><a href=\"#\" class=\"profit-point-link\" data-point=\"{item.Key}\">{item.Key}</a></td><td>{item.Value:N0}</td><td>{share:N0}</td></tr>');";
 
             }
+
+            // 建立商品統計 Dictionary
+            var productTopMap = new Dictionary<string, (int TotalQty, decimal TotalAmount)>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string productName = row["ProductName"]?.ToString() ?? "";
+                decimal price = row["CheckoutPrice"] == DBNull.Value ? 0 : Convert.ToDecimal(row["CheckoutPrice"]);
+                int qty = Convert.ToInt32(row["Quantity"]);
+
+                if (string.IsNullOrWhiteSpace(productName))
+                    continue;
+
+                if (!productTopMap.ContainsKey(productName))
+                    productTopMap[productName] = (0, 0);
+
+                productTopMap[productName] = (
+                    productTopMap[productName].TotalQty + qty,
+                    productTopMap[productName].TotalAmount + price * qty
+                );
+            }
+
+
 
 
             // 書籍彙總表：以書名為主 key
@@ -163,7 +199,8 @@ namespace purchase_sale_storeroom.sale
                   "var point = $(this).data('point');" +
                   "var rows = detailMap[point] || '';" +
                   "$('#detailTableBody').html(rows);" +
-                  "$('#detailModal').modal('show');" +
+                  "$('#top3Table tbody').html(top3Map[point] || '');" +
+                  "$('#detailModal').modal('show');"+
                   "});";
 
 
@@ -179,6 +216,30 @@ namespace purchase_sale_storeroom.sale
                 string value = string.Join("", kvp.Value).Replace("'", "\\'");
                 js += $"detailMap['{key}'] = '{value}';";
             }
+
+            js += "$('#top3Table tbody').empty();";
+            int rank = 1;
+            foreach (var item in productTopMap.OrderByDescending(i => i.Value.TotalAmount).Take(3))
+            {
+                js += $"$('#top3Table tbody').append('<tr><td>{rank}</td><td>{HttpUtility.JavaScriptStringEncode(item.Key)}</td><td>{item.Value.TotalQty}</td><td>{item.Value.TotalAmount:N0}</td></tr>');";
+                rank++;
+            }
+
+            js += "var top3Map = {};";
+
+            foreach (var point in top3Map.Keys)
+            {
+                var list = top3Map[point]
+                    .OrderByDescending(p => p.Value.Total)
+                    .Take(3)
+                    .Select((item, idx) =>
+                        $"<tr><td>{idx + 1}</td><td>{HttpUtility.JavaScriptStringEncode(item.Key)}</td><td>{item.Value.Qty}</td><td>{item.Value.Total:N0}</td></tr>"
+                    );
+
+                string html = string.Join("", list).Replace("'", "\\'").Replace("\n", "").Replace("\r", "");
+                js += $"top3Map['{point.Replace("'", "\\'")}'] = '{html}';";
+            }
+
 
             js += "</script>";
             ClientScript.RegisterStartupScript(this.GetType(), "updateTable", js);

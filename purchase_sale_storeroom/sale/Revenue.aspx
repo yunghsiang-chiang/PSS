@@ -35,6 +35,7 @@
                 <tbody></tbody>
             </table>
 
+
             <!-- Modal 結構 -->
             <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -44,6 +45,20 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                            <h5 class="mt-4">Top 3 銷售商品（依商品名稱合併）</h5>
+                            <table class="table" id="top3Table">
+                                <thead>
+                                    <tr>
+                                        <th>排行</th>
+                                        <th>商品名稱</th>
+                                        <th>總數量</th>
+                                        <th>總金額</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+
+                            <h5>商品明細</h5>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -57,6 +72,7 @@
                                 <tbody id="detailTableBody"></tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
             </div>
