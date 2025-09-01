@@ -1,0 +1,37 @@
+﻿.mentor-tree ul {
+    list-style: none;
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+    .mentor-tree ul::before {
+        content: "";
+        border-left: 1px solid #ccc;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0.5rem;
+    }
+
+.mentor-tree li {
+    margin: .3rem 0;
+    position: relative;
+}
+
+    .mentor-tree li::before {
+        content: "";
+        border-top: 1px solid #ccc;
+        position: absolute;
+        top: .9rem;
+        left: 0;
+        width: .7rem;
+    }
+
+.mentor-tree .node {
+    display: inline-block;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    box-shadow: 0 1px 1px rgba(0,0,0,.03);
+}
