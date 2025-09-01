@@ -9,10 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
 
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <div id="loadingOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div id="lottieContainer" style="width: 200px; height: 200px;"></div>
+            <div style="margin-top: 20px; font-size: 18px; color: #666; text-align: center;">光之旅程即將展開...</div>
+        </div>
+
 
         <div class="container text-center my-4">
             <asp:DropDownList ID="ddlMonth" runat="server" CssClass="form-control d-inline-block w-auto me-2"></asp:DropDownList>
@@ -94,5 +101,23 @@
         </div>
 
     </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 載入 Lottie 翻書動畫
+            lottie.loadAnimation({
+                container: document.getElementById('lottieContainer'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_Ef3PBxZB4a.json' // 替換為你選的動畫 JSON 連結
+            });
+
+            // 模擬資料載入（實際使用時替換為你頁面載入完成的 callback）
+            setTimeout(() => {
+                document.getElementById("loadingOverlay").style.display = "none";
+            }, 8000); // 等待 8 秒後結束動畫
+        });
+
+    </script>
 </body>
 </html>
