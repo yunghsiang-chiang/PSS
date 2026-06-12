@@ -214,6 +214,8 @@
     <Content Include="Global.asax" />
     <Content Include="HMember_Edit.aspx" />
     <Content Include="Instructor_Training.aspx" />
+    <Content Include="HGuidanceCardBrowse.aspx" />
+    <Content Include="System\HGuidanceCardUpload.aspx" />
     <Content Include="login.aspx" />
     <Content Include="login_attendance.aspx" />
     <Content Include="MentorRegister.aspx" />
@@ -391,6 +393,20 @@
     </Compile>
     <Compile Include="Instructor_Training.aspx.designer.cs">
       <DependentUpon>Instructor_Training.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HGuidanceCardBrowse.aspx.cs">
+      <DependentUpon>HGuidanceCardBrowse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HGuidanceCardBrowse.aspx.designer.cs">
+      <DependentUpon>HGuidanceCardBrowse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="System\HGuidanceCardUpload.aspx.cs">
+      <DependentUpon>HGuidanceCardUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="System\HGuidanceCardUpload.aspx.designer.cs">
+      <DependentUpon>HGuidanceCardUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
