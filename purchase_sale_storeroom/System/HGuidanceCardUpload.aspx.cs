@@ -123,7 +123,7 @@ namespace purchase_sale_storeroom
                         string physicalPath = Path.Combine(folderPhysicalPath, fileName);
                         string relativePath = folderVirtualPath + fileName;
 
-                        uploadedFile.Upload.SaveAs(physicalPath);
+                        File.WriteAllBytes(physicalPath, uploadedFile.FileBytes);
                         savedPhysicalPaths.Add(physicalPath);
 
                         UpsertImage(connection, transaction, topicId, uploadedFile, relativePath);
@@ -490,15 +490,16 @@ VALUES
         private string ValidateUpload(FileUpload upload, LanguageInfo language, DateTime topicDate, out UploadFileInfo fileInfo)
         {
             fileInfo = null;
+
             string extension = Path.GetExtension(upload.FileName);
             if (!AllowedExtensions.Contains(extension))
             {
                 return language.Name + "圖片副檔名不允許，僅支援 .jpg、.jpeg、.png、.webp。";
             }
 
-            if (upload.PostedFile.ContentLength <= 0 || upload.PostedFile.ContentLength > MaxFileSizeBytes)
+            if (upload.PostedFile == null || upload.PostedFile.ContentLength <= 0 || upload.PostedFile.ContentLength > MaxFileSizeBytes)
             {
-                return language.Name + "圖片大小不可超過 5MB。";
+                return language.Name + "圖片大小不可超過 5MB，且不可為空檔。";
             }
 
             if (!AllowedContentTypes.Contains(upload.PostedFile.ContentType))
@@ -506,25 +507,28 @@ VALUES
                 return language.Name + "圖片 ContentType 不允許，僅支援 image/jpeg、image/png、image/webp。";
             }
 
+            byte[] fileBytes = upload.FileBytes;
+            if (fileBytes == null || fileBytes.Length == 0)
+            {
+                return language.Name + "圖片內容讀取失敗，檔案內容為空。";
+            }
+
             try
             {
-                using (Stream stream = upload.PostedFile.InputStream)
+                using (MemoryStream ms = new MemoryStream(fileBytes))
+                using (System.Drawing.Image image = System.Drawing.Image.FromStream(ms))
                 {
-                    if (stream.CanSeek) stream.Position = 0;
-                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(stream))
+                    fileInfo = new UploadFileInfo
                     {
-                        fileInfo = new UploadFileInfo
-                        {
-                            Language = language,
-                            Upload = upload,
-                            OriginalFileName = upload.FileName,
-                            ContentType = upload.PostedFile.ContentType,
-                            FileSizeBytes = upload.PostedFile.ContentLength,
-                            Width = image.Width,
-                            Height = image.Height
-                        };
-                    }
-                    if (stream.CanSeek) stream.Position = 0;
+                        Language = language,
+                        Upload = upload,
+                        OriginalFileName = upload.FileName,
+                        ContentType = upload.PostedFile.ContentType,
+                        FileSizeBytes = fileBytes.Length,
+                        Width = image.Width,
+                        Height = image.Height,
+                        FileBytes = fileBytes
+                    };
                 }
             }
             catch
@@ -537,10 +541,12 @@ VALUES
                         Upload = upload,
                         OriginalFileName = upload.FileName,
                         ContentType = upload.PostedFile.ContentType,
-                        FileSizeBytes = upload.PostedFile.ContentLength,
+                        FileSizeBytes = fileBytes.Length,
                         Width = 0,
-                        Height = 0
+                        Height = 0,
+                        FileBytes = fileBytes
                     };
+
                     return null;
                 }
 
@@ -648,6 +654,7 @@ VALUES
             public long FileSizeBytes { get; set; }
             public int Width { get; set; }
             public int Height { get; set; }
+            public byte[] FileBytes { get; set; }
         }
     }
 }
