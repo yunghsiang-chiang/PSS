@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HGuidanceCardUpload.aspx.cs" Inherits="purchase_sale_storeroom.System_HGuidanceCardUpload" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HGuidanceCardUpload.aspx.cs" Inherits="purchase_sale_storeroom.System_HGuidanceCardUpload" %>
 
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -74,7 +74,7 @@
                         <asp:TextBox ID="Txt_Description" runat="server" TextMode="MultiLine" />
                     </div>
                     <div class="checkline">
-                        <asp:CheckBox ID="Chk_IsPublished" runat="server" Text="是否發布到前台" />
+                        <asp:CheckBox ID="Chk_IsPublished" runat="server" Text="Should it be published to the front end?" />
                     </div>
                 </div>
 
@@ -106,15 +106,15 @@
                 </div>
 
                 <div class="actions">
-                    <asp:Button ID="Btn_Save" runat="server" Text="儲存" CssClass="btn btn-primary" OnClick="Btn_Save_Click" />
-                    <asp:HyperLink ID="Lnk_New" runat="server" CssClass="btn btn-secondary" NavigateUrl="~/System/HGuidanceCardUpload.aspx">新增另一筆</asp:HyperLink>
+                    <asp:Button ID="Btn_Save" runat="server" Text="store" CssClass="btn btn-primary" OnClick="Btn_Save_Click" />
+                    <asp:HyperLink ID="Lnk_New" runat="server" CssClass="btn btn-secondary" NavigateUrl="~/System/HGuidanceCardUpload.aspx">Add another entry</asp:HyperLink>
                 </div>
             </section>
 
             <section class="panel">
                 <h2>最近資料列表</h2>
                 <div class="table-wrap">
-                    <asp:GridView ID="Gv_Recent" runat="server" AutoGenerateColumns="False" GridLines="None" EmptyDataText="目前沒有圖卡資料。">
+                    <asp:GridView ID="Gv_Recent" runat="server" AutoGenerateColumns="False" GridLines="None" EmptyDataText="There is currently no image data available.">
                         <Columns>
                             <asp:BoundField DataField="HTopicDate" HeaderText="日期" DataFormatString="{0:yyyy/MM/dd}" HtmlEncode="false" />
                             <asp:BoundField DataField="HTopicTitle" HeaderText="主題名稱" />

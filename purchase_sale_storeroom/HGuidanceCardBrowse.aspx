@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HGuidanceCardBrowse.aspx.cs" Inherits="purchase_sale_storeroom.HGuidanceCardBrowse" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HGuidanceCardBrowse.aspx.cs" Inherits="purchase_sale_storeroom.HGuidanceCardBrowse" %>
 <%@ Import Namespace="System" %>
 <%@ Import Namespace="System.Web" %>
 

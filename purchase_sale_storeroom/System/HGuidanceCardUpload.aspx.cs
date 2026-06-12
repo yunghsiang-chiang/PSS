@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,7 +15,7 @@ namespace purchase_sale_storeroom
 {
     public partial class System_HGuidanceCardUpload : Page
     {
-        private const string ConnectionStringName = "HochiSystem";
+        private const string ConnectionStringName = "HochiReports";
         private const int MaxFileSizeBytes = 5 * 1024 * 1024;
         private const string SystemActorName = "GuidanceCardUpload";
         private static readonly string[] RequiredTopicColumns = { "HID", "HTopicDate", "HTopicTitle", "HTopicCode", "HDescription", "HIsPublished", "HStatus", "HCreate", "HCreateDT", "HModify", "HModifyDT" };
@@ -511,7 +511,7 @@ VALUES
                 using (Stream stream = upload.PostedFile.InputStream)
                 {
                     if (stream.CanSeek) stream.Position = 0;
-                    using (Image image = Image.FromStream(stream))
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(stream))
                     {
                         fileInfo = new UploadFileInfo
                         {

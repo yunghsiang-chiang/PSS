@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,7 +11,7 @@ namespace purchase_sale_storeroom
 {
     public partial class HGuidanceCardBrowse : Page
     {
-        private const string ConnectionStringName = "HochiSystem";
+        private const string ConnectionStringName = "HochiReports";
         private static readonly LanguageInfo[] Languages =
         {
             new LanguageInfo("zh-TW", "繁體"),
@@ -33,28 +33,41 @@ namespace purchase_sale_storeroom
             }
         }
 
-        protected string GetLanguageCssClass(object code)
+        public string GetLanguageCssClass(object code)
         {
             return String.Equals(Convert.ToString(code), CurrentLanguageCode, StringComparison.OrdinalIgnoreCase)
                 ? "lang-link active"
                 : "lang-link";
         }
 
-        protected string ResolveImageUrl(object imagePath)
+        public string ResolveImageUrl(object imagePath)
         {
             string path = Convert.ToString(imagePath);
-            if (String.IsNullOrWhiteSpace(path)) return String.Empty;
+
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                return String.Empty;
+            }
+
+            path = path.Trim();
+
+            // 已經是完整網址就直接回傳
+            if (path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                path.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                return path;
+            }
+
             return ResolveUrl("~/" + path.TrimStart('~', '/'));
         }
 
-        protected string ToJsString(object value)
+
+        public string ToJsString(object value)
         {
             string text = Convert.ToString(value) ?? String.Empty;
-            return "'" + text
-                .Replace("\\", "\\\\")
-                .Replace("'", "\\'")
-                .Replace("\r", "")
-                .Replace("\n", "") + "'";
+
+            // 產生安全的 JavaScript 字串，例如 'xxx'
+            return "'" + HttpUtility.JavaScriptStringEncode(text) + "'";
         }
 
         private void BindLanguages()
@@ -155,7 +168,7 @@ ORDER BY t.HTopicDate DESC;";
             ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[ConnectionStringName];
             if (settings == null || String.IsNullOrWhiteSpace(settings.ConnectionString))
             {
-                throw new ConfigurationErrorsException("找不到連線字串：" + ConnectionStringName);
+                throw new ConfigurationErrorsException("No connecting string found:" + ConnectionStringName);
             }
             return settings.ConnectionString;
         }
